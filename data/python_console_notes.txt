@@ -1,0 +1,191 @@
+PyDev console: starting.
+Python 3.9.1 (v3.9.1:1e5d33e9b9, Dec  7 2020, 12:10:52) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+"word"
+'word'
+"162838"
+'162838'
+number = 3
+"the number is " + number
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+"the number is " + str(number)
+'the number is 3'
+number_string = "849390"
+result = number_string + 2
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+result = int(number_string) + 2
+result2 = float(number_string) + 2
+result3 = int(number_string) + 2.03
+result3: int = int(number_string) + 2.03
+result3 = int(int(number_string) + 2.03)
+result3 = int(int(number_string) + 2.93)
+result3.to_bytes()
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: to_bytes() missing required argument 'length' (pos 1)
+result3.to_bytes(2)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: to_bytes() missing required argument 'byteorder' (pos 2)
+result3.bit_length()
+20
+sentence = "It's a great Tuesday evening!"
+len(sentence)
+29
+sentence + number_string
+"It's a great Tuesday evening!849390"
+sentence * 3
+"It's a great Tuesday evening!It's a great Tuesday evening!It's a great Tuesday evening!"
+len(sentence * 3)
+87
+padded = "     abc def "
+padded.strip()
+'abc def'
+padded = "*** abc def ****"
+padded.strip('*')
+' abc def '
+padded = "^@^@^@^@ hello ^@^@^@^@^@"
+padded.strip('^@')
+' hello '
+padded.strip('^@').strip()
+'hello'
+padded = "abc"
+padded.center(30, '#')
+'#############abc##############'
+padded.rjust(15, '^')
+'^^^^^^^^^^^^abc'
+padded.endswith('c')
+True
+padded.endswith(' ')
+False
+padded.startswith(' ')
+False
+padded.startswith('a')
+True
+padded.startswith('A')
+False
+padded.upper().startswith('A')
+True
+sentence.find('great')
+7
+sentence
+"It's a great Tuesday evening!"
+sentence.find('It')
+0
+sentence.find('bob')
+-1
+sentence.count('e')
+4
+sen = "ya ya ya, woo hoo, yay"
+sen.count('ya')
+4
+sen.split()
+['ya', 'ya', 'ya,', 'woo', 'hoo,', 'yay']
+my_list = sen.split()
+my_2nd_list = [3, 'John', 4.33333, True]
+ls = [3,4,1,8,2,5,7,3,0]
+sorted(ls)
+[0, 1, 2, 3, 3, 4, 5, 7, 8]
+ls
+[3, 4, 1, 8, 2, 5, 7, 3, 0]
+ls.sort()
+ls.reverse()
+x = ls.reverse()
+x
+x
+ls.reverse()
+reversed(ls)
+<list_reverseiterator object at 0x1112b52e0>
+list(reversed(ls))
+[0, 1, 2, 3, 3, 4, 5, 7, 8]
+sorted("abcdef")
+['a', 'b', 'c', 'd', 'e', 'f']
+sorted("hello")
+['e', 'h', 'l', 'l', 'o']
+sorted(ls)
+[0, 1, 2, 3, 3, 4, 5, 7, 8]
+reversed(ls)
+<list_reverseiterator object at 0x1112a7fa0>
+list(reversed(ls))
+[0, 1, 2, 3, 3, 4, 5, 7, 8]
+set(reversed(ls))
+{0, 1, 2, 3, 4, 5, 7, 8}
+ls
+[8, 7, 5, 4, 3, 3, 2, 1, 0]
+ls.pop(1)
+7
+ls
+[8, 5, 4, 3, 3, 2, 1, 0]
+ls.remove(3)
+ls
+[8, 5, 4, 3, 2, 1, 0]
+ls.remove(8)
+ls
+[5, 4, 3, 2, 1, 0]
+ls.pop(0)
+5
+ls
+[4, 3, 2, 1, 0]
+ls.append('end')
+ls
+[4, 3, 2, 1, 0, 'end']
+ls.insert(0, "begin")
+ls
+['begin', 4, 3, 2, 1, 0, 'end']
+ls.extend(my_2nd_list)
+ls
+['begin', 4, 3, 2, 1, 0, 'end', 3, 'John', 4.33333, True]
+ls[3] = None
+ls[5] = ['new', 'list', 'here']
+ls[5][1] = 'CAT'
+ls[-1]
+True
+ls[-3]
+'John'
+ls[2:5]
+[3, None, 1]
+ls[6:]
+['end', 3, 'John', 4.33333, True]
+ls[6:11]
+['end', 3, 'John', 4.33333, True]
+ls[6:10]
+['end', 3, 'John', 4.33333]
+ls[6:]
+['end', 3, 'John', 4.33333, True]
+ls[:3]
+['begin', 4, 3]
+ls[::-1]
+[True, 4.33333, 'John', 3, 'end', ['new', 'CAT', 'here'], 1, None, 3, 4, 'begin']
+ls[::-2]
+[True, 'John', 'end', 1, 3, 'begin']
+ls[::3]
+['begin', None, 'end', 4.33333]
+ls.copy()
+['begin', 4, 3, None, 1, ['new', 'CAT', 'here'], 'end', 3, 'John', 4.33333, True]
+ls[::]
+['begin', 4, 3, None, 1, ['new', 'CAT', 'here'], 'end', 3, 'John', 4.33333, True]
+sentence[::-1]
+"!gnineve yadseuT taerg a s'tI"
+sentence[::3]
+'Is e eaeng'
+sentence[-1]
+'!'
+tpl = (2,4,6,1,4)
+tuple(ls)
+('begin', 4, 3, None, 1, ['new', 'CAT', 'here'], 'end', 3, 'John', 4.33333, True)
+a = 12
+b = a
+b = 13
+a = []
+b = a
+b.append('hello')
+b = a.copy()
+b.append('more')
+c = b[::]
+b.append('55')
+list('abc')
+['a', 'b', 'c']

@@ -1,0 +1,25 @@
+Homework 2
+
+Create python function that performs the following action:
+
+1) takes 2 lists as input
+2) checks if the lists have same members, regardless of order
+3) does not effect the original order within either list
+4) return True if the lists have the same members
+or False if they have different members
+
+Example:
+
+[1,3,5,7] AND [7,1,5,3]  ->  True
+['a', 'b', 'c'] AND ['a', 'b', 'd'] -> False
+[9,8,7,6,5] AND [9,8,7,6] -> False
+
+Part 2:
+Test your function using a unittest.TestCase class
+
+Create at least 2 negative test cases, and at least 6 total test cases.
+
+Hint:
+        self.assertEqual(a,d)
+        self.assertListEqual(a,d)
+        self.assertTrue(a==d)
