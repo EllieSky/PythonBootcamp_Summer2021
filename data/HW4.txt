@@ -1,0 +1,33 @@
+Homework 4
+
+Using the make_tree function created in class as an example...
+Create a new function which generates a tree where each branch uses numbers:
+
+    1
+   222
+  33333
+ 4444444
+    |
+
+The height of the tree should still be variable, however if height is > 9, the numbers should be reused from zero.
+if height = 10 then the bottom branch should use 0
+if height = 11 then the bottom branch should use 1
+if height = 12 then the bottom branch should use 2... etc.
+
+
+
+Bonus challenge:
+
+            1
+           121
+          12321
+         1234321
+        123454321
+       12345654321
+      1234567654321
+     123456787654321
+    12345678987654321
+   1234567890987654321
+  123456789010987654321
+           |
+
