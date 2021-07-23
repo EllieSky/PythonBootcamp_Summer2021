@@ -11,7 +11,7 @@ def convert_int_to_list(number):
 
 
 class IntConvertTests(unittest.TestCase):
-    def test_positive_int(self):
+    test_positive_int(self):
         expected = [7, 4, 2, 1]
         actual = convert_int_to_list(7421)
         self.assertEqual(expected, actual)
