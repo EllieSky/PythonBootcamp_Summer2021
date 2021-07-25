@@ -3,10 +3,11 @@ import random
 
 def make_my_tree(height_of_tree: int = random.randint(2, 12)):
     for branch in range(height_of_tree):
-        symbol = branch + 1
-        if symbol > 9:
-            symbol = str(symbol)[-1]
-        print(' ' * (height_of_tree - branch) + f'{symbol}' * (1 + (branch * 2)))
+        # symbol = branch + 1
+        # if symbol > 9:
+        #     symbol = str(symbol)[-1]
+        # print(' ' * (height_of_tree - branch) + f'{symbol}' * (1 + (branch * 2)))
+        print(' ' * (height_of_tree - branch) + f'{str(branch + 1)[-1]}' * (1 + (branch * 2)))
     print(' ' * height_of_tree + '|')
 
 
