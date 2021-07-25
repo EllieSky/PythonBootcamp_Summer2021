@@ -11,6 +11,7 @@ class GoogleSearchTests(unittest.TestCase):
     def test_search_hello(self):
         # for Firefox use:
         # GeckoDriverManager().install()
+        # browser = webdriver.Chrome()
 
         browser = webdriver.Chrome(executable_path=ChromeDriverManager().install())
         browser.get("http://www.google.com")
