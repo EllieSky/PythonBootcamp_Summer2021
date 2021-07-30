@@ -1,12 +1,12 @@
 import unittest
-from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
+from steps.common import authenticate
+from tests import CHROME_PATH, DOMAIN
 
 
 class LoginPageTests(unittest.TestCase):
@@ -19,9 +19,7 @@ class LoginPageTests(unittest.TestCase):
 
     def test_valid_login(self):
         original_url = self.browser.current_url
-        self.browser.find_element(By.ID, "txtUsername").send_keys(ADMIN_USER)
-        self.browser.find_element(By.ID, "txtPassword").send_keys(DEFAULT_PASSWORD)
-        self.browser.find_element(By.ID, "btnLogin").click()
+        authenticate(self.browser)
 
         wait = WebDriverWait(self.browser, 7)
         wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
@@ -35,6 +33,12 @@ class LoginPageTests(unittest.TestCase):
         self.assertEqual("Employee Information",
                          self.browser.find_element(By.TAG_NAME, "h1").text)
 
+
+    def test_invalid_password(self):
+        pass
+
+    def test_empty_password(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
