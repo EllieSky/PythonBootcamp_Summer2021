@@ -14,6 +14,7 @@ class MyTestCase(unittest.TestCase):
         self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
         self.browser.get(DOMAIN)
 
+
     def tearDown(self) -> None:
         self.browser.quit()
 

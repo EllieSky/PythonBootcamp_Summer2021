@@ -62,3 +62,4 @@ class TestVowelCount(unittest.TestCase):
     def test_object_input(self):
         obj = object()
         self.assertEqual(0, vowel_counter(obj))
+

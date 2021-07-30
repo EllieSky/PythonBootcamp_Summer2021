@@ -3,10 +3,10 @@ Homework 2
 Create python function that performs the following action:
 
 1) takes 2 lists as input
-2) checks if the lists have same members, regardless of order
+2) checks if the lists have same numbers, regardless of order
 3) does not effect the original order within either list
-4) return True if the lists have the same members
-or False if they have different members
+4) return True if the lists have the same numbers
+or False if they have different numbers
 
 Example:
 
