@@ -7,3 +7,5 @@ DOMAIN = "http://hrm-online.portnov.com/"
 
 ADMIN_USER = "admin"
 DEFAULT_PASSWORD = "password"
+
+

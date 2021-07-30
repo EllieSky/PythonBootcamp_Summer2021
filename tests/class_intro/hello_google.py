@@ -17,6 +17,7 @@ class GoogleSearchTests(unittest.TestCase):
         browser.find_element_by_name('q').send_keys('hello', Keys.ENTER)
         sleep(2)
         actual = browser.find_element_by_name('q').get_attribute('value')
+
         self.assertEqual('hello', actual)
         pass
 
