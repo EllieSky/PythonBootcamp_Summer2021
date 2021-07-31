@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import random
 
 
@@ -53,4 +52,4 @@ def task_2_bonus_challenge_func_3(number):
 task_1_make_tree_1(number)
 task_1_make_tree_2(number)
 task_2_bonus_challenge_func_3(number)
->>>>>>> first commit (home work 4)
+
