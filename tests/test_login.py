@@ -34,7 +34,15 @@ class LoginPageTests(unittest.TestCase):
         #
         # self.browser.find_element(By.TAG_NAME, "h1").text
         # self.assertEqual("Employee Information", self.browser.find_element(By.TAG_NAME, "h1").text)
+        pass
+        def test_invalid_password(self):
+            pass
 
+        def test_log_out(self):
+            pass
+
+        def test_empty(self):
+            pass
 
 
 
