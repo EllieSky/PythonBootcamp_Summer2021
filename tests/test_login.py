@@ -33,12 +33,31 @@ class LoginPageTests(unittest.TestCase):
         self.assertEqual("Employee Information",
                          self.browser.find_element(By.TAG_NAME, "h1").text)
 
-
     def test_invalid_password(self):
-        pass
+        authenticate(self.browser, 'admin', 'hello')
+        wait = WebDriverWait(self.browser, 5)
+
+        error_message = self.browser.find_element(By.ID, "spanMessage").text
+        error_url_position = self.browser.current_url.find("/auth/validateCredentials")
+        print(error_message + " " + str(error_url_position))
+
+        self.assertEqual("Invalid credentials", error_message)
+        self.assertEqual(error_url_position > 0, True)
 
     def test_empty_password(self):
-        pass
+        authenticate(self.browser, 'admin', '')
+        wait = WebDriverWait(self.browser, 5)
+
+        error_message = self.browser.find_element(By.ID, "spanMessage").text
+        self.assertEqual("Password cannot be empty", error_message)
+
+    def test_empty_username(self):
+        authenticate(self.browser, '', 'password')
+        wait = WebDriverWait(self.browser, 5)
+
+        error_message = self.browser.find_element(By.ID, "spanMessage").text
+        self.assertEqual("Username cannot be empty", error_message)
+
 
 if __name__ == '__main__':
     unittest.main()
