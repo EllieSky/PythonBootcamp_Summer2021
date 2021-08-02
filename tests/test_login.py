@@ -1,4 +1,5 @@
 import unittest
+from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -58,7 +59,7 @@ class LoginPageTests(unittest.TestCase):
         self.assertEqual("Username cannot be empty", error_message)
 
     def test_valid_credentials_after_timeout(self):
-        wait = WebDriverWait(self.browser, 3600)
+        sleep(3600)
         authenticate(self.browser)
 
         error_message = self.browser.find_element(By.ID, "spanMessage").text
