@@ -39,7 +39,6 @@ class LoginPageTests(unittest.TestCase):
 
         error_message = self.browser.find_element(By.ID, "spanMessage").text
         error_url_position = self.browser.current_url.find("/auth/validateCredentials")
-        print(error_message + " " + str(error_url_position))
 
         self.assertEqual("Invalid credentials", error_message)
         self.assertEqual(error_url_position > 0, True)
@@ -57,6 +56,13 @@ class LoginPageTests(unittest.TestCase):
 
         error_message = self.browser.find_element(By.ID, "spanMessage").text
         self.assertEqual("Username cannot be empty", error_message)
+
+    def test_valid_credentials_after_timeout(self):
+        wait = WebDriverWait(self.browser, 3600)
+        authenticate(self.browser)
+
+        error_message = self.browser.find_element(By.ID, "spanMessage").text
+        self.assertEqual("Csrf token validation failed", error_message)
 
 
 if __name__ == '__main__':
