@@ -23,3 +23,12 @@ def calculate_first_letter_in_word(rows):
         first_letter = second_word_in_row[0]
         array.append(first_letter)
     return array
+
+def sort_names(rows):
+    array = []
+    for cell in rows:
+        split_words = (str(cell.text)).split()
+        second_word_in_row = split_words[1]
+        array.append(second_word_in_row)
+    return array
+
