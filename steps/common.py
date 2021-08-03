@@ -13,7 +13,8 @@ def authenticate(browser, username=ADMIN_USER, password=DEFAULT_PASSWORD):
     browser.find_element(By.ID, "txtPassword").send_keys(password)
     browser.find_element(By.ID, "btnLogin").click()
 
- # inessa_hw_7  part 2
+
+# inessa_hw_7  part 2
 def calculate_first_letter_in_word(rows):
     array = []
     for cell in rows:
