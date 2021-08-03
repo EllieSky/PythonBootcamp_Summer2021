@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
-from steps.common import authenticate
+from steps.common import authenticate, calculate_first_letter_in_word
 from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
 
 
@@ -14,10 +14,10 @@ class PimSearchTests(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
         self.browser.get(DOMAIN)
-        authenticate(self.browser)
-
-        wait = WebDriverWait(self.browser, 7)
-        wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
+        # authenticate(self.browser)
+        #
+        # wait = WebDriverWait(self.browser, 7)
+        # wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
 
     def tearDown(self) -> None:
         self.browser.quit()
@@ -64,6 +64,15 @@ class PimSearchTests(unittest.TestCase):
             self.assertEqual('QA Manager', single_row.find_element(By.XPATH, ".//td[5]").text)
             self.assertEqual('Full Time', single_row.find_element(By.XPATH, ".//td[6]").text)
 
+
+    def test_sorting_values(self):
+        authenticate(self.browser)
+        self.browser.find_element(By.XPATH, '//*[@id="resultTable"]/thead/tr/th[3]').click()
+        wait = WebDriverWait(self.browser, 2)
+        rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
+        expected_result = sorted(calculate_first_letter_in_word(rows))
+        actual_result = calculate_first_letter_in_word(rows)
+        self.assertEqual(expected_result, actual_result)
 
 if __name__ == '__main__':
     unittest.main()

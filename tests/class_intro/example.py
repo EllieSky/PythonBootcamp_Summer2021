@@ -8,7 +8,7 @@ import random
 
 # height_of_tree = 3
 # print(' '*3 + '*')
-# print(' '*2 + '*'*3)
+# print(' '*2 + '*'*3)km
 # print(' ' + '*'*5)
 
 def make_tree(height_of_tree: int = random.randint(2, 12), symbol: str = '*'):
