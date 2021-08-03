@@ -24,6 +24,7 @@ def calculate_first_letter_in_word(rows):
         array.append(first_letter)
     return array
 
+
 def sort_words(rows):
     array = []
     for cell in rows:

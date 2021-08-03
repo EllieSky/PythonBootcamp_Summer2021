@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
-from steps.common import authenticate, calculate_first_letter_in_word, sort_names
+from steps.common import authenticate, calculate_first_letter_in_word, sort_words
 from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
 
 
@@ -79,8 +79,8 @@ class PimSearchTests(unittest.TestCase):
         self.browser.find_element(By.XPATH, '//*[@id="resultTable"]/thead/tr/th[3]').click()
         wait = WebDriverWait(self.browser, 2)
         rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
-        expected_result = sorted(sort_names(rows))
-        actual_result = sort_names(rows)
+        expected_result = sorted(sort_words(rows))
+        actual_result = sort_words(rows)
         self.assertEqual(expected_result, actual_result)
 
 if __name__ == '__main__':
