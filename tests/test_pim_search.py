@@ -74,7 +74,7 @@ class PimSearchTests(unittest.TestCase):
         actual_result = calculate_first_letter_in_word(rows)
         self.assertEqual(expected_result, actual_result)
 
-    def test_alpha_sort_by_word(self):
+    def test_sort_by_word(self):
         authenticate(self.browser)
         self.browser.find_element(By.XPATH, '//*[@id="resultTable"]/thead/tr/th[3]').click()
         wait = WebDriverWait(self.browser, 2)
