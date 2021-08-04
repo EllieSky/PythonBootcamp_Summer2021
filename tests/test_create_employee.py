@@ -74,7 +74,7 @@ class CreateEmployeeTests(unittest.TestCase):
         list_of_names = []
 
         for single_row in rows:
-            list_of_names.append(single_row.find_element(By.XPATH, ".//td[3]").text)
+            list_of_names.append(single_row.find_element(By.XPATH, ".//td[3]").text.upper())
 
         print(list_of_names)
         self.assertEqual(sorted(list_of_names), list_of_names)
@@ -84,11 +84,13 @@ class CreateEmployeeTests(unittest.TestCase):
         pages = form.find_elements(By.XPATH, "//div[1]/ul")
 
         list_all_names = []
-        for page in pages:
+        total_records = pages[1].text.split("of")[1].split("\n")[0].strip()
+
+        for page in pages[1:]:
             rows = browser.find_elements(By.XPATH, "//tbody/tr")
             for single_row in rows:
-                list_all_names.append(single_row.find_element(By.XPATH, ".//td[3]").text)
-            if browser.find_element(By.LINK_TEXT, "Next"):
+                list_all_names.append(single_row.find_element(By.XPATH, ".//td[3]").text.upper())
+            if page.text.split("of")[0].split("-")[1].strip() != total_records:
                 browser.find_element(By.LINK_TEXT, "Next").click()
         print(list_all_names)
         self.assertEqual(sorted(list_all_names), list_all_names)
