@@ -54,7 +54,7 @@ class TestsHomeWork7(unittest.TestCase):
         for x in actual_list_of_web_elements:
             actual_list.append(x.text)
         sorted_list = sorted(actual_list)
-        self.assertEqual(sorted_list, actual_list)
+        self.assertEqual(sorted(actual_list), actual_list)
 
     # Part 3: Bonus challenge
     # Sorting table values by First (Middle) Name column
@@ -66,16 +66,38 @@ class TestsHomeWork7(unittest.TestCase):
         wb.find_element(By.XPATH, "//thead/tr/th[3]/a").click()
         WebDriverWait(self.browser, 5).until(expected_conditions.url_contains(
             "viewEmployeeList?sortField=firstMiddleName&sortOrder=ASC"))
-        page_count = int(wb.find_element(By.XPATH, "//div[@class='top']/ul/li[1]").text.split()[-1])
-        for x in range(int(page_count / 50) + 1):
-            if x > 0:
-                wb.find_element(By.XPATH, "//div[@class='top']/ul/li[6]/a").click()
+        # page_count = int(wb.find_element(By.XPATH, "//div[@class='top']/ul/li[1]").text.split()[-1])
+        # for x in range(int(page_count / 50) + 1):
+        #     if x > 0:
+        #         wb.find_element(By.XPATH, "//div[@class='top']/ul/li[6]/a").click()
+        #     actual_list_of_web_elements = wb.find_elements(By.XPATH, "//tbody/tr/td[3]/a")
+        #     actual_list = []
+        #     for value in actual_list_of_web_elements:
+        #         actual_list.append(value.text)
+        #     # sorted_list = sorted(actual_list)
+        #     self.assertEqual(sorted(actual_list), actual_list)
+        # Second way (still checking all data pages in table)
+        # while True:
+        #     actual_list_of_web_elements = wb.find_elements(By.XPATH, "//tbody/tr/td[3]/a")
+        #     actual_list = []
+        #     for value in actual_list_of_web_elements:
+        #         actual_list.append(value.text)
+        #     self.assertEqual(sorted(actual_list), actual_list)
+        #     if len(actual_list) == 50:
+        #         wb.find_element(By.XPATH, "//div[@class='top']/ul/li[6]/a").click()
+        #     else:
+        #         return False
+        # Third way (same logic that in 'Second way', but we checking only first and last table data page)
+        while True:
             actual_list_of_web_elements = wb.find_elements(By.XPATH, "//tbody/tr/td[3]/a")
             actual_list = []
             for value in actual_list_of_web_elements:
                 actual_list.append(value.text)
-            sorted_list = sorted(actual_list)
-            self.assertEqual(sorted_list, actual_list)
+            self.assertEqual(sorted(actual_list), actual_list)
+            if len(actual_list) == 50:
+                wb.find_element(By.XPATH, "//div[@class='top']/ul/li[7]/a").click()
+            else:
+                return False
 
 
 if __name__ == '__main__':
