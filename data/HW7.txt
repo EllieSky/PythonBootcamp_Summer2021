@@ -1,0 +1,22 @@
+Homework 7
+
+Part 1:
+Create at least 3 negative tests for the login functionality of the following site:
+http://hrm-online.portnov.com
+
+example: blank username
+
+
+
+Part 2:
+Using the site above create a test for sorting table values by First (Middle) Name column
+1. Login  (admin/password)
+2. Scroll down to the Employee list table
+3. Click the "First (Middle) Name" table header
+4. Wait for the sort to complete (hint: url)
+5. Ensure the records on the first page are listed in alphabetical order by name
+
+
+Bonus Challenge:
+Extend the test above to include all pages of employee records
+Assume there can be more then the current number of pages and you don't know how many there will be eventually.
