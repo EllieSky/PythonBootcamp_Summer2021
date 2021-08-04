@@ -26,8 +26,8 @@ class MyTestCase(unittest.TestCase):
         wait = WebDriverWait(self.browser, 7)
         wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
 
-        self.browser.find_element(By.ID, 'empsearch_id').send_keys('0001')
-        self.browser.find_element(By.ID, 'searchBtn').click()
+        self.browser.find_element(By.ID, 'empsearch_id').send_keys()
+        self.browser.find_element(By.ID, 'search_form').submit('0001')
 
         rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
         self.assertEqual(1, len(rows))

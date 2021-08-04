@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
-
+# from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
+from PythonBootcamp_Summer2021.tests import DOMAIN, CHROME_PATH, ADMIN_USER, DEFAULT_PASSWORD
 
 class LoginPageTests(unittest.TestCase):
     def setUp(self):
