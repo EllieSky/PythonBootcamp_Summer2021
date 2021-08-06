@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from steps.common import authentification
+from test_steps.common import authentification
 from tests import DOMAIN, CHROME_PATH, ADMIN_USER, DEFAULT_PASSWORD
 
 
