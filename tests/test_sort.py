@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from steps.common import authenticate
+from test_steps.common import authenticate
 from tests import CHROME_PATH, DOMAIN
 
 
@@ -18,7 +18,6 @@ class TableSortTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.browser.quit()
-
 
     def test_pim_table_first_name_sort(self):
         browser = self.browser
