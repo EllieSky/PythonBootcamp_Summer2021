@@ -1,7 +1,4 @@
 import unittest
-import operator
-from gettext import gettext
-from random import random, randrange
 
 from parameterized import parameterized
 
