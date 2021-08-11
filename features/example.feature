@@ -9,3 +9,6 @@ Feature: Login Screen
     When I enter text admin into the element id=txtUsername
     And I enter text password into the element id=txtPassword
     And I click the element id=btnLogin
+    Then I expect the url to contain /pim/viewEmployeeList
+    And I wait for the element id=welcome to be visible for 2 seconds
+    And I expect element id=welcome to have text "Welcome Admin"
