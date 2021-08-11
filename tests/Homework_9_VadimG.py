@@ -51,29 +51,3 @@ class CalcTests(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-"""
-Part 1:
-Create a parameterized template with test data for the following site:
-https://www.calculatorsoup.com/calculators/math/basic.php
-tests:
-1 + 2 = 3
-4 / 0 = Not a Number
-4 / 3 = 1.3333333333
-9 * 5 = 45
-0 - 4 = -4
-Your test should CLICK the numbers, NOT ENTER them using send_keys
-
-Part 2:
-Using the site above create another test which uses the 'random' package
-to choose random numbers to click AND random operator (+, -, /, *) to click.
-Then asserts that the result is what you calculated usig python.
-Again, the challenge is NOT USE send_keys.
-Bonus Challenge:
-Improve the code in Part 2 to enter by clicking multi-digit numbers.
-Example:
-456 + 234
-501 - 33
-4 - 299
-1206 * 28
-12 / 2
-"""
