@@ -40,13 +40,12 @@ class CalculatorTests(unittest.TestCase):
     def test_hw_part2_random_bonus(self):
         input1 = random.randint(0, 999)
         input2 = random.randint(0, 999)
-        operators_pairs = [["+", "+"], ["−", "-"], ["×", "*"], ["÷", "/"]]
-        operator_index = random.randint(0, 3)
+        operator = random.choice([["+", "+"], ["−", "-"], ["×", "*"], ["÷", "/"]])
 
         for digit in str(input1):
             self.driver.find_element(By.CSS_SELECTOR, 'input.button.number[value="{}"]'.format(digit)).click()
 
-        self.driver.find_element(By.CSS_SELECTOR, 'input.button.operator[value="{}"]'.format(operators_pairs[operator_index][0])).click()
+        self.driver.find_element(By.CSS_SELECTOR, 'input.button.operator[value="{}"]'.format(operator[0])).click()
 
         for digit in str(input2):
             self.driver.find_element(By.CSS_SELECTOR, 'input.button.number[value="{}"]'.format(digit)).click()
@@ -54,13 +53,18 @@ class CalculatorTests(unittest.TestCase):
         self.driver.find_element(By.CSS_SELECTOR, 'input.button.operator[value="="]').click()
 
         actual_result = self.driver.find_element(By.ID, "display").get_attribute('value')
-        string_for_calculation = str(input1) + operators_pairs[operator_index][1] + str(input2)
-        calculated_result = eval(string_for_calculation)
+
+        string_for_calculation = str(input1) + operator[1] + str(input2)
+
+        if input2 == 0 and operator == ["÷", "/"]:
+            calculated_result = "Not a Number"
+        else:
+            calculated_result = str(round(eval(string_for_calculation), 10))
 
         # print("string_for_calculation: ", string_for_calculation)
         # print("calculated_result: ", calculated_result)
         # print("actual_result: ", actual_result)
-        self.assertEqual(str(calculated_result), actual_result)
+        self.assertEqual(calculated_result, actual_result)
 
 
 if __name__ == '__main__':
