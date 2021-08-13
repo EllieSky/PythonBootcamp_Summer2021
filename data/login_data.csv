@@ -1,0 +1,4 @@
+test_name,username,password,expected_error_message
+invalid password,admin,123abc,Invalid credentials
+empty username,,password,Username cannot be empty
+empty password,admin,,Password cannot be empty

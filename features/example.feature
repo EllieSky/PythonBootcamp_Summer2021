@@ -23,5 +23,5 @@ Feature: Login Screen
     Examples:
       |test_name       |username      |password            |expected_error_message  |
       |invalid password|${ADMIN_USER} |123abc              |Invalid credentials     |
-      |empty username  |None          |${DEFAULT_PASSWORD} |Username cannot be empty|
-      |empty password  |${ADMIN_USER} |None                |Password cannot be empty|
+      |empty username  |${EMPTY}      |${DEFAULT_PASSWORD} |Username cannot be empty|
+      |empty password  |${ADMIN_USER} |${EMPTY}            |Password cannot be empty|
