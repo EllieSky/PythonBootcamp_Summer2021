@@ -24,5 +24,5 @@ class BaseMethods:
         return self.find_elem(by, locator).text
 
     def wait_for_elem_visible(self, by, locator, seconds):
-        return WebDriverWait(self.browser, seconds).until(
+        return WebDriverWait(self.browser, int(seconds)).until(
             EC.visibility_of_element_located((by, locator)))
