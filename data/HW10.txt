@@ -1,0 +1,12 @@
+Homework 10:
+
+Create a BDD scenario for the following:
+Login as admin
+Switch to admin tab
+Click on bobboss username
+Click Edit
+Update bob’s password
+Logout
+Login as bobboss to verify the new password works.
+
+Add steps into expect.py and browser_methods as needed, add functions into the base_methods as needed.
