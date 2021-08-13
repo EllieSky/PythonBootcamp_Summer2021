@@ -1,7 +1,17 @@
-from behave import step
+from behave import step, use_step_matcher
+from selenium.webdriver.support.select import Select
 
 from test_steps.base_methods import BaseMethods
 from tests import ADMIN_USER, DEFAULT_PASSWORD
+
+from behave import *
+use_step_matcher('re')
+
+
+@step('I select from element (id|xpath|link text|name)="([^"]*)?" option "([^"]*)?" by text')
+def select_option(context, by, locator, option_text):
+    bm: BaseMethods = context.base_methods
+    Select(bm.find_elem(by, locator)).select_by_visible_text(option_text)
 
 
 @step('I login as ADMIN')

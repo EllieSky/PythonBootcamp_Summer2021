@@ -20,9 +20,9 @@ def enter_text(context, text, by, locator):
     context.base_methods.enter_text(_clean(text), by, locator)
 
 
-@step('I get the text from element {by}={locator}')
-def get_text(context, by, locator) -> str:
-    return context.base_methods.get_text(by, locator)
+@step('I get the text from element {by}={locator} as {var} variable')
+def get_text(context, by, locator, var) -> str:
+    setattr(context, var, context.base_methods.get_text(by, locator))
 
 
 @step('I wait for the element {by}={locator} to be visible for {seconds} seconds')

@@ -11,6 +11,7 @@ Feature: Login Screen
     Then I expect the url to contain /pim/viewEmployeeList
     And I wait for the element id=welcome to be visible for 2 seconds
     And I expect element id=welcome to have text "Welcome Admin"
+    And I get the text from element id=welcome as greeting variable
 
 
   Scenario Template: Perform a login using <test_name>
