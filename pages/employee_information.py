@@ -3,7 +3,7 @@ from typing import List
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from test_steps.base_methods import BaseMethods, find_elems
+from test_steps.base_methods import BaseMethods
 
 
 class EmployeeInformationPage(BaseMethods):
