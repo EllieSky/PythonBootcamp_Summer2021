@@ -1,0 +1,387 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+
+        <title>OrangeHRM</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                
+        <link rel="shortcut icon" href="/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/favicon.ico">
+        
+        <!-- Library CSS files -->
+        <link href="/symfony/web/webres_537af76b8151f7.60690968/themes/default/css/reset.css" rel="stylesheet" type="text/css">
+        <link href="/symfony/web/webres_537af76b8151f7.60690968/themes/default/css/tipTip.css" rel="stylesheet" type="text/css">
+        <link href="/symfony/web/webres_537af76b8151f7.60690968/themes/default/css/jquery/jquery-ui-1.8.21.custom.css" rel="stylesheet" type="text/css">
+        <link href="/symfony/web/webres_537af76b8151f7.60690968/themes/default/css/jquery/jquery.autocomplete.css" rel="stylesheet" type="text/css">
+        
+        <!-- Custom CSS files -->
+        <link href="/symfony/web/webres_537af76b8151f7.60690968/themes/default/css/main.css" rel="stylesheet" type="text/css">
+        
+        <script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/validate/jquery.validate.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/orangehrm.autocomplete.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/bootstrap-modal.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/jquery/jquery.clickoutside.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/orangehrm.validate.js"></script>
+<script type="text/javascript" src="/symfony/web/webres_537af76b8151f7.60690968/js/archive.js"></script>
+   
+        
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->        
+
+
+
+    </head>
+    <body>
+      
+        <div id="wrapper">
+            
+            <div id="content">
+
+                  <style type="text/css">
+
+    body {
+        background-color: #FFFFFF;
+        height: 700px;
+    }
+
+    img {
+        border: none;
+    }
+    #btnLogin {
+        padding: 0;
+    }
+    input:not([type="image"]) {
+        background-color: transparent;
+        border: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        background-color: transparent;
+        border: none;
+    }
+
+    .textInputContainer {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        color: #666666;
+    }
+
+    #divLogin {
+        background: transparent url(/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/login.png) no-repeat center top;
+        height: 520px;
+        width: 100%;
+        border-style: hidden;
+        margin: auto;
+        padding-left: 10px;
+    }
+
+    #divUsername {
+        padding-top: 153px;
+        padding-left: 50%;
+    }
+
+    #divPassword {
+        padding-top: 35px;
+        padding-left: 50%;
+    }
+
+    #txtUsername {
+        width: 240px;
+        border: 0px;
+        background-color: transparent;
+    }
+
+    #txtPassword {
+        width: 240px;
+        border: 0px;
+        background-color: transparent;
+    }
+
+    #txtUsername, #txtPassword {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        color: #666666;
+        vertical-align: middle;
+        padding-top:0;
+    }
+    
+    #divLoginHelpLink {
+        width: 270px;
+        background-color: transparent;
+        height: 20px;
+        margin-top: 12px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 50%;
+    }
+
+    #divLoginButton {
+        padding-top: 2px;
+        padding-left: 49.3%;
+        float: left;
+        width: 350px;
+    }
+
+    #btnLogin {
+        background: url(/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/Login_button.png) no-repeat;
+        cursor:pointer;
+        width: 94px;
+        height: 26px;
+        border: none;
+        color:#FFFFFF;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    #divLink {
+        padding-left: 230px;
+        padding-top: 105px;
+        float: left;
+    }
+
+    #divLogo {
+        padding-left: 30%;
+        padding-top: 70px;
+    }
+
+    #spanMessage {
+        background: transparent url(/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/mark.png) no-repeat;
+        padding-left: 18px; 
+        padding-top: 0px;
+        color: #DD7700;
+        font-weight: bold;
+    }
+    
+    #logInPanelHeading{
+        position:absolute;
+        padding-top:100px;
+		padding-left:49.5%;
+        font-family:sans-serif;
+        font-size: 15px;
+        color: #544B3C;
+        font-weight: bold;
+    }
+    
+    .form-hint {
+    color: #878787;
+    padding: 4px 8px;
+    position: relative;
+    left:-254px;
+}
+
+    
+</style>
+
+<div id="divLogin">
+    <div id="divLogo">
+        <img src="/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/logo.png">
+    </div>
+
+    <form id="frmLogin" method="post" action="/symfony/web/index.php/auth/validateCredentials">
+        <input type="hidden" name="actionID">
+        <input type="hidden" name="hdnUserTimeZoneOffset" id="hdnUserTimeZoneOffset" value="-7">
+        <input type="hidden" name="_csrf_token" value="a1c7aa1ddc4b90efddbaae9e5a2a54a3" id="csrf_token">        <div id="logInPanelHeading">LOGIN Panel</div>
+
+        <div id="divUsername" class="textInputContainer">
+            <input name="txtUsername" id="txtUsername" type="text">          <span class="form-hint" style="display: none;">Username</span> 
+        </div>
+        <div id="divPassword" class="textInputContainer">
+            <input name="txtPassword" id="txtPassword" type="password">         <span class="form-hint" style="display: none;">Password</span>
+        </div>
+        <div id="divLoginHelpLink"></div>
+        <div id="divLoginButton">
+            <input type="submit" name="Submit" class="button" id="btnLogin" value="LOGIN"><span id="spanMessage">Password cannot be empty</span>
+                    </div>
+    </form>
+
+</div>
+
+<div id="footer">
+    <div>
+    OrangeHRM 3.1.2<br>
+© 2005 - 2021 <a href="http://www.orangehrm.com" target="_blank">OrangeHRM, Inc</a>. All rights reserved.
+    </div>
+    <div id="social-icons">
+        <a href="http://www.linkedin.com/groups?home=&amp;gid=891077" target="_blank">
+            <img src="/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/linkedin.png" alt="LinkedIn OrangeHRM group"></a>&nbsp;
+        <a href="http://www.facebook.com/OrangeHRM" target="_blank">
+            <img src="/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/facebook.png" alt="OrangeHRM on Facebook"></a>&nbsp;
+        <a href="http://twitter.com/orangehrm" target="_blank">
+            <img src="/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/twiter.png" alt="OrangeHRM on twitter"></a>&nbsp;
+        <a href="http://www.youtube.com/orangehrm" target="_blank">
+            <img src="/symfony/web/webres_537af76b8151f7.60690968/themes/default/images/login/youtube.png" alt="OrangeHRM on youtube"></a>&nbsp;
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    function calculateUserTimeZoneOffset() {
+        var myDate = new Date();
+        var offset = (-1) * myDate.getTimezoneOffset() / 60;
+        return offset;
+    }
+            
+    function addHint(inputObject, hintImageURL) {
+        if (inputObject.val() == '') {
+            inputObject.css('background', "url('" + hintImageURL + "') no-repeat 10px 3px");
+        }
+    }
+            
+    function removeHint() {
+       $('.form-hint').css('display', 'none');
+    }
+    
+    function showMessage(message) {
+        if ($('#spanMessage').size() == 0) {
+            $('<span id="spanMessage"></span>').insertAfter('#btnLogin');
+        }
+
+        $('#spanMessage').html(message);
+    }
+    
+    function validateLogin() {
+        var isEmptyPasswordAllowed = false;
+        
+        if ($('#txtUsername').val() == '') {
+            showMessage('Username cannot be empty');
+            return false;
+        }
+        
+        if (!isEmptyPasswordAllowed) {
+            if ($('#txtPassword').val() == '') {
+                showMessage('Password cannot be empty');
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    $(document).ready(function() {
+        /*Set a delay to compatible with chrome browser*/
+        setTimeout(checkSavedUsernames,100);
+        
+        $('#txtUsername').focus(function() {
+            removeHint();
+        });
+        
+        $('#txtPassword').focus(function() {
+             removeHint();
+        });
+        
+        $('.form-hint').click(function(){
+            removeHint();
+            $('#txtUsername').focus();
+        });
+        
+        $('#hdnUserTimeZoneOffset').val(calculateUserTimeZoneOffset().toString());
+        
+        $('#frmLogin').submit(validateLogin);
+        
+    });
+
+    function checkSavedUsernames(){
+        if ($('#txtUsername').val() != '') {
+            removeHint();
+        }
+    }
+
+    if (window.top.location.href != location.href) {
+        window.top.location.href = location.href;
+    }
+</script>
+
+            </div> <!-- content -->
+          
+        </div> <!-- wrapper -->
+        
+ 
+        <script type="text/javascript">
+
+            $(document).ready(function() {                            
+                
+                /* Enabling tooltips */
+                $(".tiptip").tipTip();
+
+                /* Toggling header menus */
+                $("#welcome").click(function () {
+                    $("#welcome-menu").slideToggle("fast");
+                    $(this).toggleClass("activated-welcome");
+                    return false;
+                });
+                
+                $("#help").click(function () {
+                    $("#help-menu").slideToggle("fast");
+                    $(this).toggleClass("activated-help");
+                    return false;
+                });
+                
+                $('.panelTrigger').outside('click', function() {
+                    $('.panelContainer').stop(true, true).slideUp('fast');
+                });                
+
+                /* 
+                 * Button hovering effects 
+                 * Note: we are not using pure css using :hover because :hover applies to even disabled elements.
+                 * The pseudo class :enabled is not supported in IE < 9.
+                 */                
+                $(document).on({
+                    mouseenter: function () {
+                        $(this).addClass('hover');                        
+                    },
+                    mouseleave: function () {
+                        $(this).removeClass('hover');                        
+                    }
+
+                }, 'input[type=button], input[type=submit], input[type=reset]'); 
+  
+                /* Fading out main messages */
+                $(document).on({
+                    click: function() {
+                        $(this).parent('div.message').fadeOut("slow");
+                    }
+                }, '.message a.messageCloseButton');                
+
+                /* Toggling search form: Begins */
+                //$(".toggableForm .inner").hide(); // Disabling this makes search forms to be expanded by default.
+
+                $(".toggableForm .toggle").click(function () {
+                    $(".toggableForm .inner").slideToggle('slow', function() {
+                        if($(this).is(':hidden')) {
+                            $('.toggableForm .tiptip').tipTip({content:'Expand for Options'});
+                        } else {
+                            $('.toggableForm .tiptip').tipTip({content:'Hide Options'});
+                        }
+                    });
+                    $(this).toggleClass("activated");
+                });
+                /* Toggling search form: Ends */
+
+                /* Enabling/disabling form fields: Begin */
+                
+                $('form.clickToEditForm input, form.clickToEditForm select, form.clickToEditForm textarea').attr('disabled', 'disabled');
+                $('form.clickToEditForm input.calendar').datepicker('disable');
+                $('form.clickToEditForm input[type=button]').removeAttr('disabled');
+                
+                $('form input.editButton').click(function(){
+                    $('form.clickToEditForm input, form.clickToEditForm select, form.clickToEditForm textarea').removeAttr('disabled');
+                    $('form.clickToEditForm input.calendar').datepicker('enable');
+                });
+                
+                /* Enabling/disabling form fields: End */
+                
+            });
+            
+        </script>        
+
+    
+    
+
+
+<div id="tiptip_holder" style="max-width:200px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div></body></html>
