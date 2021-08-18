@@ -23,7 +23,7 @@ class CreateEmployeeTests(unittest.TestCase):
         self.browser.quit()
 
 
-    # TODO: WORK IN PROGRESS
+    # TODO: DEBUG and convert to POM
     def test_create_employee_no_creds(self):
         browser = self.browser
 

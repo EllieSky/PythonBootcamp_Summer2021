@@ -6,33 +6,26 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
+from fixtures import AdminUserAuthentication
+from pages.employee_information import EmployeeInformationPage
 from test_steps.common import authenticate
 from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
 
 
-class PimSearchTests(unittest.TestCase):
-    def setUp(self):
-        self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
-        self.browser.get(DOMAIN)
-        authenticate(self.browser)
-
-        wait = WebDriverWait(self.browser, 7)
-        wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
-
-    def tearDown(self) -> None:
-        self.browser.quit()
+class PimSearchTests(AdminUserAuthentication):
 
     def test_search_by_valid_id(self):
-        self.browser.find_element(By.ID, 'empsearch_id').send_keys('0001')
-        self.browser.find_element(By.ID, 'searchBtn').click()
+        emp_info_page = EmployeeInformationPage(self.browser)
 
-        rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
+        emp_info_page.search_for_employee_by_id("0001")
+        rows = emp_info_page.get_all_employee_table_rows()
         self.assertEqual(1, len(rows))
 
-        self.assertEqual('0001', self.browser.find_element(By.XPATH, '//tbody/tr/td[2]/a').text)
-        self.assertEqual('Bob', self.browser.find_element(By.XPATH, '//tbody/tr/td[3]/a').text)
-        self.assertEqual('Boss', self.browser.find_element(By.XPATH, '//tbody/tr/td[4]/a').text)
-        self.assertEqual('QA Manager', self.browser.find_element(By.XPATH, '//tbody/tr/td[5]').text)
+        emp_info = emp_info_page.get_row_info(1)
+        self.assertEqual('0001', emp_info.get('id'))
+        self.assertEqual('Bob', emp_info.get('fist name'))
+        self.assertEqual('Boss', emp_info.get('last name'))
+        self.assertEqual('QA Manager', emp_info.get('job title'))
 
     def test_search_by_job_title(self):
         browser = self.browser

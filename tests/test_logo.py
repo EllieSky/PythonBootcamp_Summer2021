@@ -1,25 +1,11 @@
 import unittest
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
-from test_steps.common import authenticate
-from tests import CHROME_PATH, DOMAIN
+from fixtures import AdminUserAuthentication
 
 
-class LogoTests(unittest.TestCase):
-    def setUp(self):
-        self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
-        self.browser.get(DOMAIN)
-        authenticate(self.browser)
-
-        wait = WebDriverWait(self.browser, 7)
-        wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
-
-    def tearDown(self) -> None:
-        self.browser.quit()
+class LogoTests(AdminUserAuthentication):
 
     def test_logo_position(self):
         browser = self.browser
