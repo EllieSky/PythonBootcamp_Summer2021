@@ -6,21 +6,12 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
+from fixtures import AdminUserAuthentication
 from test_steps.common import authenticate
 from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
 
 
-class PimSearchTests(unittest.TestCase):
-    def setUp(self):
-        self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
-        self.browser.get(DOMAIN)
-        authenticate(self.browser)
-
-        wait = WebDriverWait(self.browser, 7)
-        wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
-
-    def tearDown(self) -> None:
-        self.browser.quit()
+class PimSearchTests(AdminUserAuthentication):
 
     def test_search_by_valid_id(self):
         self.browser.find_element(By.ID, 'empsearch_id').send_keys('0001')
