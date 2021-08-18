@@ -7,6 +7,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 from fixtures import AdminUserAuthentication
+from pages.employee_information import EmployeeInformationPage
 from test_steps.common import authenticate
 from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
 
@@ -14,8 +15,11 @@ from tests import CHROME_PATH, DOMAIN, ADMIN_USER, DEFAULT_PASSWORD
 class PimSearchTests(AdminUserAuthentication):
 
     def test_search_by_valid_id(self):
-        self.browser.find_element(By.ID, 'empsearch_id').send_keys('0001')
-        self.browser.find_element(By.ID, 'searchBtn').click()
+        emp_info_page = EmployeeInformationPage(self.browser)
+
+        emp_info_page.search_for_employee_by_id('0001')
+        # self.browser.find_element(By.ID, 'empsearch_id').send_keys('0001')
+        # self.browser.find_element(By.ID, 'searchBtn').click()
 
         rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
         self.assertEqual(1, len(rows))
