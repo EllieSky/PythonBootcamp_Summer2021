@@ -4,6 +4,7 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 from test_steps.common import authenticate
@@ -23,7 +24,8 @@ class CreateEmployeeTests(unittest.TestCase):
         self.browser.quit()
 
 
-    # TODO: WORK IN PROGRESS
+    # TODO: DEBUG and convert to POM
+    # NOTE: this needs explicit wait added at several point in the code
     def test_create_employee_no_creds(self):
         browser = self.browser
 
@@ -43,12 +45,23 @@ class CreateEmployeeTests(unittest.TestCase):
 
         self.assertEqual("Personal Details", browser.find_element(By.CSS_SELECTOR, ".personalDetails h1").text)
 
+        self.browser.find_element(By.XPATH, '//*[@id="sidenav"]//a[text()="Job"]').click()
         # Edit button
         browser.find_element(By.ID, "btnSave").click()
 
-        browser.find_element(By.ID, "personal_optGender_1").click()
+        Select(browser.find_element(By.ID, "job_sub_unit")).select_by_visible_text("HR")
         browser.find_element(By.ID, "btnSave").click()  # Save button
 
         browser.find_element(By.LINK_TEXT, "PIM").click()
-        pass
+        self.browser.find_element(By.ID, 'empsearch_id').send_keys(emp_id)
+        self.browser.find_element(By.ID, 'searchBtn').click()
+
+        rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
+        self.assertEqual(1, len(rows))
+
+        self.assertEqual(emp_id, self.browser.find_element(By.XPATH, '//tbody/tr/td[2]/a').text)
+        self.assertEqual('Steve', self.browser.find_element(By.XPATH, '//tbody/tr/td[3]/a').text)
+        self.assertEqual('Jones', self.browser.find_element(By.XPATH, '//tbody/tr/td[4]/a').text)
+        self.assertEqual('HR', self.browser.find_element(By.XPATH, '//tbody/tr/td[7]').text)
+
 
