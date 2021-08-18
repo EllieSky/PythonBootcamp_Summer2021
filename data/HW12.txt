@@ -1,0 +1,12 @@
+Homework:
+
+Located test_create_employee_no_creds within the tests.test_create_employee module.
+Debug the test - it need several explicit waits added to work (WebDriverWait)
+Once the test works, optimize the code and convert to Page Object Model (POM)
+
+You will need to create additional page objects:
+AddEmployeePage
+PersonalDetailsPage
+JobPage
+
+Good Luck!

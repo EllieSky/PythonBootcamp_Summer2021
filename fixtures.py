@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from pages.login import LoginPage
 from test_steps.common import authenticate
 from tests import CHROME_PATH, DOMAIN, DEFAULT_WAIT, PROJ_HOME
 
@@ -39,5 +40,5 @@ class AdminUserAuthentication(BaseFixture):
         # self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
         # self.browser.get(DOMAIN)
         super().setUp()
-        authenticate(self.browser)
+        LoginPage(self.browser).authenticate()
         self.wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
