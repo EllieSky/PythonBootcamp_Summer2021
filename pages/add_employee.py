@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
 
+from menus.top_nav import TopNavMenu
 from test_steps.base_methods import BaseMethods
 from tests import BASE_URL
 
@@ -7,6 +9,10 @@ from tests import BASE_URL
 class BasePage(BaseMethods):
     page_header = (By.TAG_NAME, "h1")
     PAGE_URL = '/'
+
+    def __init__(self, browser: WebDriver):
+        super().__init__(browser)
+        self.top_menu = TopNavMenu(browser)
 
     def get_page_header(self):
         return self.find_elem(self.page_header).text

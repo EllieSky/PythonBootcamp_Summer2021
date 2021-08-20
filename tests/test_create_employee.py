@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 
 from fixtures import AdminUserAuthentication
+from menus.top_nav import TopNavMenu
 from pages.add_employee import AddEmployeePage
 from pages.employee_information import EmployeeInformationPage
 from pages.job import JobPage
@@ -16,6 +17,7 @@ from pages.personal_details import PersonalDetailsPage
 class CreateEmployeeTests(AdminUserAuthentication):
     def setUp(self):
         super().setUp()
+        self.top_menu = TopNavMenu(self.browser)
         self.personal_details_page = PersonalDetailsPage(self.browser)
         self.job_page = JobPage(self.browser)
         self.add_employee_page = AddEmployeePage(self.browser)
@@ -38,8 +40,14 @@ class CreateEmployeeTests(AdminUserAuthentication):
 
         self.job_page.update_job_info('HR')
 
-        #
-        browser.find_element(By.LINK_TEXT, "PIM").click()
+        # Option to use if only using top menu 1 time in the module:
+        # TopNavMenu(self.browser).open_PIM()
+
+        # Use when reusing several times, or in several tests
+        self.top_menu.open_PIM()
+
+        # OR add it as part of the base page and all pages inherit it
+        # self.job_page.top_menu.open_PIM()
 
         self.emp_info_page.search_for_employee_by_id(emp_id)
         rows = self.emp_info_page.get_all_employee_table_rows()
