@@ -1,10 +1,14 @@
 from selenium.webdriver.common.by import By
 
-from test_steps.base_methods import BaseMethods
+from pages.add_employee import BasePage
 from tests import ADMIN_USER, DEFAULT_PASSWORD
 
 
-class LoginPage(BaseMethods):
+class LoginPage(BasePage):
+    HEADER = 'LOGIN Panel'
+    PAGE_URL = '/auth/login'
+
+    page_header = (By.ID, 'logInPanelHeading')
     username_fld = (By.ID, 'txtUsername')
     password_fld = (By.ID, 'txtPassword')
     login_btn = (By.ID, "btnLogin")

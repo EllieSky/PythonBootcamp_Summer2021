@@ -1,20 +1,28 @@
 from selenium.webdriver.common.by import By
 
 from test_steps.base_methods import BaseMethods
-from tests import ADMIN_USER, DEFAULT_PASSWORD
+from tests import BASE_URL
 
 
-class AddEmployeePage(BaseMethods):
-    HEADER = 'Add Employee'
-
+class BasePage(BaseMethods):
     page_header = (By.TAG_NAME, "h1")
+    PAGE_URL = '/'
+
+    def get_page_header(self):
+        return self.find_elem(self.page_header).text
+
+    def goto_page(self):
+        self.browser.get(BASE_URL + self.PAGE_URL)
+
+
+class AddEmployeePage(BasePage):
+    HEADER = 'Add Employee'
+    PAGE_URL = '/pim/addEmployee'
+
     first_name_fld = (By.ID, "firstName")
     last_name_fld = (By.ID, "lastName")
     employee_id_fld = (By.ID, "employeeId")
     save_btn = (By.ID, "btnSave")
-
-    def get_page_header(self):
-        return self.find_elem(self.page_header).text
 
     def enter_employee_details(self, first_name=None, last_name=None, emp_id=None):
         self.enter_text(self.first_name_fld, first_name) if first_name is not None else None
