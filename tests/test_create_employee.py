@@ -5,63 +5,47 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.wait import WebDriverWait
 
-from test_steps.common import authenticate
-from tests import CHROME_PATH, DOMAIN
+from fixtures import AdminUserAuthentication
+from pages.add_employee import AddEmployeePage
+from pages.employee_information import EmployeeInformationPage
+from pages.job import JobPage
+from pages.personal_details import PersonalDetailsPage
 
 
-class CreateEmployeeTests(unittest.TestCase):
+class CreateEmployeeTests(AdminUserAuthentication):
     def setUp(self):
-        self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
-        self.browser.get(DOMAIN)
-        authenticate(self.browser)
+        super().setUp()
+        self.personal_details_page = PersonalDetailsPage(self.browser)
+        self.job_page = JobPage(self.browser)
+        self.add_employee_page = AddEmployeePage(self.browser)
+        self.emp_info_page = EmployeeInformationPage(self.browser)
 
-        wait = WebDriverWait(self.browser, 7)
-        wait.until(expected_conditions.url_contains("/pim/viewEmployeeList"))
-
-    def tearDown(self) -> None:
-        self.browser.quit()
-
-
-    # TODO: DEBUG and convert to POM
-    # NOTE: this needs explicit wait added at several point in the code
     def test_create_employee_no_creds(self):
         browser = self.browser
 
         emp_id = str(int(time.time() * 1000))[4:]
 
-        browser.find_element(By.ID, "btnAdd").click()
+        self.emp_info_page.click_add_employee()
 
-        self.assertEqual("Add Employee", browser.find_element(By.TAG_NAME, "h1").text)
+        self.assertEqual(self.add_employee_page.HEADER, self.add_employee_page.get_page_header())
+        self.add_employee_page.enter_employee_details('Steve', 'Jones', emp_id)
 
-        browser.find_element(By.ID, "firstName").send_keys('Steve')
-        browser.find_element(By.ID, "lastName").send_keys('Jones')
+        self.assertEqual(self.personal_details_page.HEADER, self.personal_details_page.get_page_header())
 
-        browser.find_element(By.ID, "employeeId").clear()
-        browser.find_element(By.ID, "employeeId").send_keys(emp_id)
-
-        browser.find_element(By.ID, "btnSave").click()
-
-        self.assertEqual("Personal Details", browser.find_element(By.CSS_SELECTOR, ".personalDetails h1").text)
-
+        #
         self.browser.find_element(By.XPATH, '//*[@id="sidenav"]//a[text()="Job"]').click()
-        # Edit button
-        browser.find_element(By.ID, "btnSave").click()
 
-        Select(browser.find_element(By.ID, "job_sub_unit")).select_by_visible_text("HR")
-        browser.find_element(By.ID, "btnSave").click()  # Save button
+        self.job_page.update_job_info('HR')
 
+        #
         browser.find_element(By.LINK_TEXT, "PIM").click()
-        self.browser.find_element(By.ID, 'empsearch_id').send_keys(emp_id)
-        self.browser.find_element(By.ID, 'searchBtn').click()
 
-        rows = self.browser.find_elements(By.XPATH, "//tbody/tr")
+        self.emp_info_page.search_for_employee_by_id(emp_id)
+        rows = self.emp_info_page.get_all_employee_table_rows()
         self.assertEqual(1, len(rows))
 
-        self.assertEqual(emp_id, self.browser.find_element(By.XPATH, '//tbody/tr/td[2]/a').text)
-        self.assertEqual('Steve', self.browser.find_element(By.XPATH, '//tbody/tr/td[3]/a').text)
-        self.assertEqual('Jones', self.browser.find_element(By.XPATH, '//tbody/tr/td[4]/a').text)
-        self.assertEqual('HR', self.browser.find_element(By.XPATH, '//tbody/tr/td[7]').text)
-
-
+        emp_info = self.emp_info_page.get_row_info(1)
+        self.assertEqual('Steve', emp_info.get('first name'))
+        self.assertEqual('Jones', emp_info.get('last name'))
+        self.assertEqual('HR', emp_info.get('sub unit'))

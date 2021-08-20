@@ -10,6 +10,7 @@ class EmployeeInformationPage(BaseMethods):
     search_btn = (By.ID, 'searchBtn')
     employee_id_fld = (By.ID, 'empsearch_id')
     table_row = (By.XPATH, "//tbody/tr")
+    add_employee_btn = (By.ID, "btnAdd")
 
     def search_for_employee_by_id(self, emp_id):
         self.enter_text(self.employee_id_fld, emp_id)
@@ -30,3 +31,6 @@ class EmployeeInformationPage(BaseMethods):
             'sub unit': row.find_element(By.XPATH, ".//td[7]").text,
             'supervisor': row.find_element(By.XPATH, ".//td[8]").text
         }
+
+    def click_add_employee(self):
+        self.click_elem(self.add_employee_btn)
