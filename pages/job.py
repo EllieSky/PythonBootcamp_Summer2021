@@ -1,25 +1,23 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 
-from pages.add_employee import BasePage
+from test_steps.base_methods import BaseMethods
 
 
-class JobPage(BasePage):
-    HEADER = 'Job'
-    PAGE_URL = '/pim/viewJobDetails/empNumber/'
-    success_msg = (By.CSS_SELECTOR, '.message.success')
-    page_header = (By.CSS_SELECTOR, ".head>h1")
-    sub_unit_fld = (By.ID, "job_sub_unit")
+class JobPage(BaseMethods):
+    job_page = (By.CSS_SELECTOR, ".head h1")
+    edit_btn = (By.ID, "btnSave")
+    sub_unit = (By.ID, "job_sub_unit")
     save_btn = (By.ID, "btnSave")
-    edit_btn = save_btn
 
-    def update_job_info(self, sub_unit=None):
+    def verify_job_page(self):
+        return self.get_text(self.job_page)
+
+    def click_edit_button(self):
         self.click_elem(self.edit_btn)
-        self.wait.until(EC.element_to_be_clickable(self.sub_unit_fld))
 
-        if sub_unit is not None:
-            Select(self.find_elem(self.sub_unit_fld)).select_by_visible_text(sub_unit)
-        # still needs all other fields added here
+    def select_sub_unit(self, txt):
+        Select(self.find_elem(self.sub_unit)).select_by_visible_text(txt)
+
+    def click_save_button(self):
         self.click_elem(self.save_btn)
-        self.wait.until(EC.presence_of_element_located(self.success_msg))
