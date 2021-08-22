@@ -1,10 +1,15 @@
 from selenium.webdriver.common.by import By
 
-from pages.add_employee import BasePage
+from test_steps.base_methods import BaseMethods
 
 
-class PersonalDetailsPage(BasePage):
-    HEADER = 'Personal Details'
-    PAGE_URL = '/pim/viewEmployee/empNumber/'
+class PersonalDetailsPage(BaseMethods):
+    pers_det_page = (By.CSS_SELECTOR, ".personalDetails h1")
+    job = (By.XPATH, '//*[@id="sidenav"]//a[text()="Job"]')
 
-    page_header = (By.CSS_SELECTOR, ".personalDetails h1")
+    def verify_personal_details_page(self):
+        return self.get_text(self.pers_det_page)
+
+    def click_job(self):
+        self.click_elem(self.job)
+

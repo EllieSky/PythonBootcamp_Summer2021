@@ -1,41 +1,28 @@
+import time
+
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
 
-from menus.top_nav import TopNavMenu
 from test_steps.base_methods import BaseMethods
-from tests import BASE_URL
 
 
-class BasePage(BaseMethods):
-    page_header = (By.TAG_NAME, "h1")
-    PAGE_URL = '/'
-
-    def __init__(self, browser: WebDriver):
-        super().__init__(browser)
-        self.top_menu = TopNavMenu(browser)
-
-    def get_page_header(self):
-        return self.find_elem(self.page_header).text
-
-    def goto_page(self):
-        self.browser.get(BASE_URL + self.PAGE_URL)
-
-
-class AddEmployeePage(BasePage):
-    HEADER = 'Add Employee'
-    PAGE_URL = '/pim/addEmployee'
-
-    first_name_fld = (By.ID, "firstName")
-    last_name_fld = (By.ID, "lastName")
-    employee_id_fld = (By.ID, "employeeId")
+class AddEmployeePage(BaseMethods):
+    add_emp_page = (By.TAG_NAME, "h1")
+    fname_fld = (By.ID, "firstName")
+    lname_fld = (By.ID, "lastName")
+    employee_id = (By.ID, "employeeId")
     save_btn = (By.ID, "btnSave")
 
-    def enter_employee_details(self, first_name=None, last_name=None, emp_id=None):
-        self.enter_text(self.first_name_fld, first_name) if first_name is not None else None
+    def verify_add_employee_page(self):
+        return self.get_text(self.add_emp_page)
 
-        if last_name is not None:
-            self.enter_text(self.last_name_fld, last_name)
+    def create_employee(self):
+        self.enter_text(self.fname_fld, 'Steve')
+        self.enter_text(self.lname_fld, 'Jones')
 
-        self.replace_input_text(self.employee_id_fld, emp_id) if emp_id is not None else None
-        # still needs code for middle name, photo, create login details, etc.
+    def create_random_emp_id(self):
+        emp_id = str(int(time.time() * 1000))[4:]
+        self.replace_input_text(self.employee_id, emp_id)
+        return emp_id
+
+    def click_save_button(self):
         self.click_elem(self.save_btn)
