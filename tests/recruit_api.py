@@ -44,10 +44,36 @@ class RecruitAPI:
             headers=self.post_headers,
             json=json)
 
+    def put_positions(self, id, **kwargs):
+        json = {
+            "title": kwargs.get('title'),
+            "address": kwargs.get('address'),
+            "city": kwargs.get('city'),
+            "state": kwargs.get('state'),
+            "zip": kwargs.get('zip'),
+            "description": kwargs.get('description'),
+            "dateOpen": kwargs.get('dateOpen'),
+            "company": kwargs.get('company')
+        }
+
+        return self.session.put(
+            url=f'https://recruit-portnov.herokuapp.com/recruit/api/v1/positions/{id}',
+            headers=self.post_headers,
+            json=json)
+
+    def get_positions(self, id):
+        return self.session.get(
+            url=f'https://recruit-portnov.herokuapp.com/recruit/api/v1/positions/{id}',
+            headers=self.post_headers)
+
+    def delete_positions(self, id):
+        return self.session.delete(
+            url=f'https://recruit-portnov.herokuapp.com/recruit/api/v1/positions/{id}',
+            headers=self.post_headers)
 
 
 # For debugging only!!!
-api = RecruitAPI()
-api.login()
-result = api.post_positions(title='API Automation Guru', state='CA')
+# api = RecruitAPI()
+# api.login()
+# result = api.post_positions(title='API Automation Guru', state='CA')
 # For homework please create a unittest and import this class to use it.
