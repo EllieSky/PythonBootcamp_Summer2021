@@ -21,6 +21,9 @@ class BaseMethods:
     def find_elems(self, locator: tuple) -> List[WebElement]:
         return self.wait.until(EC.presence_of_all_elements_located(locator))
 
+    def find_elems_or_not(self, locator):
+        return self.browser.find_elements(*locator)
+
     def click_elem(self, locator: tuple):
         self.find_elem(locator).click()
 
