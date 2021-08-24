@@ -23,18 +23,14 @@ class TerminationReasonTests(AdminUserAuthentication):
         termination_reason = 'Missing / No - Show'
         add_termination_reason.add_reason(termination_reason)
 
-        for reason in termination_page.get_list_of_reasons():
-            if termination_reason == reason.text:
-                return True
-            else:
-                return False
+        table_of_reasons = termination_page.get_table_of_reasons().text
+        # print(table_of_reasons)
+        self.assertIn(termination_reason, table_of_reasons)
 
         termination_page.remove_reason()
-        for reason in termination_page.get_list_of_reasons():
-            if termination_reason != reason.text:
-                return True
-            else:
-                return False
+        new_table_of_reasons = termination_page.get_table_of_reasons().text
+        # print(new_table_of_reasons)
+        self.assertNotIn(termination_reason, new_table_of_reasons)
 
 
 if __name__ == '__main__':
