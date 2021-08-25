@@ -1,10 +1,6 @@
 import time
-import unittest
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.select import Select
 
 from fixtures import AdminUserAuthentication
 from menus.top_nav import TopNavMenu
@@ -24,8 +20,6 @@ class CreateEmployeeTests(AdminUserAuthentication):
         self.emp_info_page = EmployeeInformationPage(self.browser)
 
     def test_create_employee_no_creds(self):
-        browser = self.browser
-
         emp_id = str(int(time.time() * 1000))[4:]
 
         self.emp_info_page.click_add_employee()
