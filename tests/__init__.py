@@ -6,7 +6,7 @@ CHROME_PATH = ChromeDriverManager().install()
 
 DOMAIN = "http://hrm-online.portnov.com"
 BASE_URL = f"{DOMAIN}/symfony/web/index.php"
-
+BASE_URL = f"{DOMAIN}/symfony/web/index.php'"
 ADMIN_USER = "admin"
 DEFAULT_PASSWORD = "password"
 

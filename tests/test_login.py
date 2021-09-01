@@ -25,6 +25,9 @@ def read_csv(header=True) -> List:
 class LoginPageTests(BaseFixture):
     @unittest.skip
     def test_valid_login(self):
+
+
+        self.browser.wi
         original_url = self.browser.current_url
         authenticate(self.browser)
 
