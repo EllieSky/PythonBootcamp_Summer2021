@@ -7,13 +7,13 @@ class ActionsChains:
     pass
 
 
-class topNavMenu(BaseMethods):
+class TopNavMenu(BaseMethods):
     pim = (By.ID, 'menu_pim_viewPimModule')
     admin = (By.ID, 'menu_admin_viewAdminModule')
     my_info =  (By.ID, 'menu_pim_viewMyDetails')
     user_managment = (By.ID, 'menu_admin_UserManagement')
     configuration_admin = (By.ID, 'menu_admin_Configuration')
-    localization =
+    localization =""
 
     def open_PIM(self):
         self.click_elem()
