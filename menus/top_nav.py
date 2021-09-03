@@ -6,6 +6,8 @@ from test_steps.base_methods import BaseMethods
 
 class TopNavMenu(BaseMethods):
     pim = (By.ID, 'menu_pim_viewPimModule')
+    pim_configuration = (By.ID, "menu_pim_Configuration")
+    termination_reasons = (By.ID, "menu_pim_viewTerminationReasons")
     admin = (By.ID, 'menu_admin_viewAdminModule')
     user_management = (By.ID, 'menu_admin_UserManagement')
     configuration_admin = (By.ID, 'menu_admin_Configuration')
@@ -41,3 +43,8 @@ class TopNavMenu(BaseMethods):
         action.move_to_element(self.find_elem(self.punch_in_out))
         action.click().perform()
 
+    def open_pim_configuration_termination_reasons(self):
+        action = ActionChains(self.browser, duration=1000)
+        action.move_to_element(self.find_elem(self.pim_configuration))
+        action.move_to_element(self.find_elem(self.termination_reasons))
+        action.click().perform()
