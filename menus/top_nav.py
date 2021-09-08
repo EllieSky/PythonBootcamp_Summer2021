@@ -14,6 +14,8 @@ class TopNavMenu(BaseMethods):
     time = (By.ID, 'menu_time_viewTimeModule')
     attendance = (By.ID, 'menu_attendance_Attendance')
     punch_in_out = (By.ID, 'menu_attendance_punchIn')
+    configuration_pim = (By.ID, 'menu_pim_Configuration')
+    termination_reason = (By.ID, 'menu_pim_viewTerminationReasons')
 
     def open_PIM(self):
         self.click_elem(self.pim)
@@ -40,4 +42,9 @@ class TopNavMenu(BaseMethods):
         action.move_to_element(self.find_elem(self.attendance))
         action.move_to_element(self.find_elem(self.punch_in_out))
         action.click().perform()
+
+    def open_PIM_Configuration_TerminationReasons(self):
+        ActionChains(self.browser).move_to_element(self.find_elem(self.pim))\
+            .move_to_element(self.find_elem(self.configuration_pim)).\
+            click(self.find_elem(self.termination_reason)).perform()
 
