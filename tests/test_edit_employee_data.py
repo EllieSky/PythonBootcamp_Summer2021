@@ -21,6 +21,7 @@ class Employee:
 
 class EditEmployeeDataTests(AdminUserAuthentication):
     f = Faker()
+
     def setUp(self):
         super(EditEmployeeDataTests, self).setUp()
         file_path = os.path.join(PROJ_HOME, 'data', 'puppy.jpg')
@@ -39,8 +40,6 @@ class EditEmployeeDataTests(AdminUserAuthentication):
     def tearDown(self) -> None:
         self.api.delete_employee(self.emp_num)
         super(EditEmployeeDataTests, self).tearDown()
-
-
 
     def test_edit_employee_middle_nick_name(self):
         middle_name = self.f.first_name()
@@ -62,7 +61,6 @@ class EditEmployeeDataTests(AdminUserAuthentication):
 
         nick_name_value = doc.find(id=emp_details_page.nick_name_fld[1]).attrs.get('value')
         self.assertEqual(nick_name, nick_name_value)
-
 
     def edit_employee_ssn(self):
         pass
