@@ -6,13 +6,14 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.login import LoginPage
-from test_steps.common import authenticate
-from tests import CHROME_PATH, DOMAIN, DEFAULT_WAIT, PROJ_HOME
+from test_steps.common import authenticate, get_browser
+from tests import DOMAIN, DEFAULT_WAIT, PROJ_HOME
 
 
 class BaseFixture(unittest.TestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
+        # self.browser = webdriver.Chrome(executable_path=CHROME_PATH)
+        self.browser = get_browser()
         self.browser.get(DOMAIN)
         self.wait = WebDriverWait(self.browser, DEFAULT_WAIT)
 

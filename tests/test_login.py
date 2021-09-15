@@ -11,7 +11,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from fixtures import BaseFixture
 from test_steps.common import authenticate
-from tests import CHROME_PATH, DOMAIN, PROJ_HOME
+from tests import DOMAIN, PROJ_HOME
 
 
 def read_csv(header=True) -> List:
