@@ -22,7 +22,7 @@ class CreateEmployeeTests(AdminUserAuthentication):
     def test_create_employee_no_creds(self):
         emp_id = str(int(time.time() * 1000))[4:]
 
-        self.emp_info_page.click_add_employee()
+        self.emp_info_page.add()
 
         self.assertEqual(self.add_employee_page.HEADER, self.add_employee_page.get_page_header())
         self.add_employee_page.enter_employee_details('Steve', 'Jones', emp_id)

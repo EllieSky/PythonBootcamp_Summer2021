@@ -3,17 +3,18 @@ from typing import List
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from blocks.add_delete import AddDelete
+from blocks.upload_file import UploadFile
 from pages.add_employee import BasePage
 
 
-class EmployeeInformationPage(BasePage):
+class EmployeeInformationPage(BasePage, AddDelete, UploadFile):
     PAGE_URL = '/pim/viewEmployeeList'
     HEADER = 'Employee Information'
 
     search_btn = (By.ID, 'searchBtn')
     employee_id_fld = (By.ID, 'empsearch_id')
     table_row = (By.XPATH, "//tbody/tr")
-    add_employee_btn = (By.ID, "btnAdd")
 
     def search_for_employee_by_id(self, emp_id):
         self.enter_text(self.employee_id_fld, emp_id)
@@ -34,6 +35,3 @@ class EmployeeInformationPage(BasePage):
             'sub unit': row.find_element(By.XPATH, ".//td[7]").text,
             'supervisor': row.find_element(By.XPATH, ".//td[8]").text
         }
-
-    def click_add_employee(self):
-        self.click_elem(self.add_employee_btn)

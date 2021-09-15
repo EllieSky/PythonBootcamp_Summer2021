@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
+from blocks.edit_save import EditSave
 from pages.add_employee import BasePage
 
 
-class PersonalDetailsPage(BasePage):
+class PersonalDetailsPage(BasePage, EditSave):
     HEADER = 'Personal Details'
     PAGE_URL = '/pim/viewEmployee/empNumber/'
 
@@ -19,12 +20,7 @@ class PersonalDetailsPage(BasePage):
     last_name_fld = (By.ID, 'personal_txtEmpLastName')
     nick_name_fld = (By.ID, 'personal_txtEmpNickName')
 
-    save_btn = (By.ID, "btnSave")
-    edit_btn = save_btn
-    success_msg = (By.CSS_SELECTOR, '.message.success')
-
-    def edit(self):
-        self.click_elem(self.edit_btn)
+    default_input = first_name_fld
 
     def update_personal_details(self, first_name=None, middle_name=None, last_name=None, nick_name=None):
         if not self.find_elem(self.first_name_fld).is_enabled():
@@ -34,8 +30,7 @@ class PersonalDetailsPage(BasePage):
             self.replace_input_text(self.middle_name_fld, middle_name)
         self.replace_input_text(self.last_name_fld, last_name) if last_name is not None else None
         self.replace_input_text(self.nick_name_fld, nick_name) if nick_name is not None else None
-        self.click_elem(self.save_btn)
-        self.wait.until(EC.presence_of_element_located(self.success_msg))
+        self.save()
 
     def get_profile_pic_header(self):
         return self.get_text(self.profile_pic_header)
