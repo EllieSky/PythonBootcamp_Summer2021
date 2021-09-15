@@ -24,10 +24,12 @@ DEFAULT_WAIT = config.get(TEST_ENV, 'DEFAULT_WAIT')
 
 
 class DriverPath:
+    @classmethod
     @property
-    def FIREFOX(self):
+    def FIREFOX(cls):
         return GeckoDriverManager().install()
 
+    @classmethod
     @property
-    def CHROME(self):
+    def CHROME(cls):
         return ChromeDriverManager().install()

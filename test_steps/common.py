@@ -8,9 +8,9 @@ from tests import ADMIN_USER, DEFAULT_PASSWORD, BROWSER, DriverPath
 def get_browser(browser_type: str = BROWSER) -> WebDriver:
     browser: WebDriver
     if browser_type.lower() == 'chrome' or browser_type.lower() == 'googlechrome':
-        browser = webdriver.Chrome(executable_path=DriverPath().CHROME)
+        browser = webdriver.Chrome(executable_path=DriverPath.CHROME)
     elif browser_type.lower() == 'firefox':
-        browser = webdriver.Firefox(executable_path=DriverPath().FIREFOX)
+        browser = webdriver.Firefox(executable_path=DriverPath.FIREFOX)
     else:
         raise TypeError(f'Browser type "{browser_type}" is currently not supported, '
                         f'please choose one of the following: \nChrome\nFirefox')

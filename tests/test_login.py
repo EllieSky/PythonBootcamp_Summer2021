@@ -4,14 +4,12 @@ import unittest
 from typing import List
 
 from parameterized import parameterized
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
 from fixtures import BaseFixture
 from test_steps.common import authenticate
-from tests import DOMAIN, PROJ_HOME
+from tests import PROJ_HOME
 
 
 def read_csv(header=True) -> List:
