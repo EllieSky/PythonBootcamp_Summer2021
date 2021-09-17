@@ -9,6 +9,7 @@ PROJ_HOME = os.path.dirname(TEST_DIR)
 
 BROWSER = os.environ.get('BROWSER') or "chrome"
 TEST_ENV = os.environ.get('TEST_ENV') or "default"
+HEADLESS = os.environ.get('HEADLESS') == "True"
 
 config = ConfigParser()
 config.read(f'{PROJ_HOME}/config.ini')

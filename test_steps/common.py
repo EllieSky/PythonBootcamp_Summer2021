@@ -2,13 +2,20 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from tests import ADMIN_USER, DEFAULT_PASSWORD, BROWSER, DriverPath
+from tests import ADMIN_USER, DEFAULT_PASSWORD, BROWSER, DriverPath, HEADLESS
 
 
 def get_browser(browser_type: str = BROWSER) -> WebDriver:
     browser: WebDriver
     if browser_type.lower() == 'chrome' or browser_type.lower() == 'googlechrome':
-        browser = webdriver.Chrome(executable_path=DriverPath.CHROME)
+        if HEADLESS:
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-gpu")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            browser = webdriver.Chrome(executable_path=DriverPath.CHROME, options=chrome_options)
+        else:
+            browser = webdriver.Chrome(executable_path=DriverPath.CHROME)
     elif browser_type.lower() == 'firefox':
         browser = webdriver.Firefox(executable_path=DriverPath.FIREFOX)
     else:
@@ -16,9 +23,9 @@ def get_browser(browser_type: str = BROWSER) -> WebDriver:
                         f'please choose one of the following: \nChrome\nFirefox')
     return browser
 
+
 def authenticate(browser, username=ADMIN_USER, password=DEFAULT_PASSWORD):
     """
-
     Used to login into Orange HRM site
 
     :param password:
