@@ -16,11 +16,11 @@ def get_browser(browser_type: str = BROWSER) -> WebDriver:
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--disable-dev-shm-usage")
             chrome_options.add_argument("--no-sandbox")
-            browser = webdriver.Chrome(service=ChromeService(DriverPath.CHROME), options=chrome_options)
+            browser = webdriver.Chrome(DriverPath.CHROME, options=chrome_options)
         else:
-            browser = webdriver.Chrome(service=ChromeService(DriverPath.CHROME))
+            browser = webdriver.Chrome(DriverPath.CHROME)
     elif browser_type.lower() == 'firefox':
-        browser = webdriver.Firefox(service=FirefoxService(DriverPath.FIREFOX))
+        browser = webdriver.Firefox(DriverPath.FIREFOX)
     else:
         raise TypeError(f'Browser type "{browser_type}" is currently not supported, '
                         f'please choose one of the following: \nChrome\nFirefox')

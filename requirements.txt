@@ -2,7 +2,7 @@ behave>=1.2.6
 parameterized>=0.8.1
 requests>=2.26.0
 requests_toolbelt>=0.9.1
-selenium>=4.0.0.rc1
+selenium>=3.141.0
 unittest-xml-reporting>=3.0.4
 webdriver-manager>=3.4.2
 
