@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
@@ -13,11 +15,11 @@ def get_browser(browser_type: str = BROWSER) -> WebDriver:
             chrome_options.add_argument("--headless")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--disable-dev-shm-usage")
-            browser = webdriver.Chrome(executable_path=DriverPath.CHROME, options=chrome_options)
+            browser = webdriver.Chrome(service=ChromeService(DriverPath.CHROME), options=chrome_options)
         else:
-            browser = webdriver.Chrome(executable_path=DriverPath.CHROME)
+            browser = webdriver.Chrome(service=ChromeService(DriverPath.CHROME))
     elif browser_type.lower() == 'firefox':
-        browser = webdriver.Firefox(executable_path=DriverPath.FIREFOX)
+        browser = webdriver.Firefox(service=FirefoxService(DriverPath.FIREFOX))
     else:
         raise TypeError(f'Browser type "{browser_type}" is currently not supported, '
                         f'please choose one of the following: \nChrome\nFirefox')
