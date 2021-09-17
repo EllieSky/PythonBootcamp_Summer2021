@@ -71,3 +71,4 @@ assert efficient_matching_pair([3, 5, 3, 17], 17)  ==   False
 assert efficient_matching_pair([3, 5, 3, 17], 11)  ==  False
 assert efficient_matching_pair([2, 2, 2, 2, 2, 2, 2, 2], 4)  ==  True
 assert efficient_matching_pair([2, 3, 4, 5], 4)  ==   False
+assert efficient_matching_pair([2, 3, 4, 5], 9)  ==   False
